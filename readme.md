@@ -21,8 +21,9 @@ https://github.com/becodeorg/BXL-Johnson-3.9/tree/master/Projets/COGIPappp
 
 ## Serveurs :
 * phpmyadmin
-* 000webhost
-* La DB est dans /Data
+* 000webhost (pour voir notre projet le compte c'est johnsonharris8@gmail.com , le mdp c'est bob99bob
+* La DB est dans /Data sinon pour la voir en temps réel aller sur 000webhost, inscrivez-vous avez mon compte, puis allez dans Website Manager -> Database Manager -> Database Manager -> PhpMyAdmin :)
+* 
 
 ## Credits
 * Merci à l'équipe de COGIP !
