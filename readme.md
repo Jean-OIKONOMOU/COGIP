@@ -22,6 +22,7 @@ https://github.com/becodeorg/BXL-Johnson-3.9/tree/master/Projets/COGIPappp
 ## Serveurs :
 * phpmyadmin
 * 000webhost
+* La DB est dans /Data
 
 ## Credits
 * Merci à l'équipe de COGIP !
