@@ -11,22 +11,23 @@
     $connection = new PDO($dsn, $username, $password, $options);
 
     $contact = array(
-      "nom" => $_POST['nom'],
-      "prenom"  => $_POST['prenom'],
-      "phone"       => $_POST['phone'],
-      "email"     => $_POST['email'],
-      "societe"  => $_POST['societe']
+      "people_nom"     => $_POST['nom'],
+      "people_prenom"  => $_POST['prenom'],
+      "people_email"   => $_POST['email'],
+      "people_phone"   => $_POST['phone'],
+      "societe_societe_id"  => $_POST['societe']
     );
 
   $sql = sprintf(
       "INSERT INTO %s (%s) values (%s)",
-      "users",
+      "people",
       implode(", ", array_keys($contact)),
       ":" . implode(", :", array_keys($contact))
   );
 
   $statement = $connection->prepare($sql);
   $statement->execute($contact);
+
   // if ($statement === true) {
   //   echo "Registration successful. <br/>";
   // } else {
@@ -36,6 +37,19 @@
     echo $sql . "<br>" . $error->getMessage();
   }}
 
+  try {
+
+    $connection = new PDO($dsn, $username, $password, $options);
+
+    $sql = "SELECT societe_id FROM societe";
+
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetchAll();
+
+  } catch(PDOException $error) {
+    echo $sql . "<br>" . $error->getMessage();
+  }
 
   ?>
 
@@ -66,19 +80,21 @@
         <div class="form-group">
     	<label for="societe">Société</label>
 
-    <select class="form-control" name="societe" id="societe">
-      <option>COGIP</option>
-      <option>SILK ROAD</option>
-      <option>PETROL INC</option>
+    <select class="form-control" for="societe" name="societe" id="societe">
+      <option value=""></option>
+      <?php foreach ($result as $row) : ?>
+      <option><?php echo htmlspecialchars($row["societe_id"]); ?></option>
+        <?php endforeach;  ?>
     </select>
+
     	<button class="btn btn-primary my-3" type="submit" name="submit" value="submit">Submit</button>
       <?php if (isset($_POST['submit']) && $statement) { ?>
-        <?php echo escape($_POST['nom']);?>successfully added. <?php
+        <?php echo htmlspecialchars($_POST['nom']);?>successfully added. <?php
         $reloadpage = $_SERVER['PHP_SELF']."#myForm";
         header("Location:$reloadpage");
         exit();?>
-
       <?php } ?>
+
 </div>
 
     </form>

@@ -1,4 +1,4 @@
-<a class="btn btn-success my-3" href="index.php">Page d'accueil</a>
+
 </div>
 </div>
 </div>

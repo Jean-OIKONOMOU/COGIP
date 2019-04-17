@@ -11,7 +11,31 @@
 
 
   </head>
-
+  <div class="container fixed-top ">
+    <nav class="navbar navbar-expand-lg">
+      <button class="navbar-toggler col-6 mx-auto py-1" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expandeded="true" aria-label="Toggle navigation">
+        <span>
+          <i class="fas fa-sitemap"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="lead nav-link text-warning " href="index.php">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="lead nav-link text-warning" href="Person.php">CONTACTS</a>
+          </li>
+          <li class="nav-item">
+            <a class="lead nav-link text-warning" href="meenuS.php">SOCIETES</a>
+          </li>
+          <li class="nav-item">
+            <a class="lead nav-link text-warning" href="Facture.html">FACTURES</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
   <body>
 
       <h1 class="jumbotron"><span class=""><strong>C<i class="far fa-eye"></i>GIP</strong></span></h1>

@@ -8,7 +8,7 @@ if (isset($_GET["id"])) {
 
     $id = $_GET["id"];
 
-    $sql = "DELETE FROM users WHERE id = :id";
+    $sql = "DELETE FROM people WHERE people_id = :id";
 
     $statement = $connection->prepare($sql);
     $statement->bindValue(':id', $id);
@@ -24,11 +24,10 @@ try {
 
   $connection = new PDO($dsn, $username, $password, $options);
 
-  $sql = "SELECT * FROM users ORDER BY nom ASC";
+  $sql = "SELECT * FROM people ORDER BY people_nom ASC";
 
   $statement = $connection->prepare($sql);
   $statement->execute();
-
   $result = $statement->fetchAll();
 
 } catch(PDOException $error) {
@@ -45,9 +44,10 @@ try {
   <tbody>
   <?php foreach ($result as $row) : ?>
     <tr>
-       <td><a title="Cliquez pour modifier." href="update-single.php?id=<?php echo escape($row["id"]);?>">Fiche de contact de <?php echo escape($row["prenom"]);?> <?php echo escape($row["nom"]); ?><i class="fas fa-pen"></i></a></td>
-      <td><a title="Cliquez pour supprimer." href="delete.php?id=<?php echo escape($row["id"]); ?>"><i class="fas fa-trash-alt"></i></a></td>
-  </tr>
+      <td><a title="Cliquez pour modifier." href="PersonUpdate-single.php?id=<?php echo htmlspecialchars($row["people_id"]);?>">Fiche de contact de <?php echo htmlspecialchars($row["people_prenom"]);?> <?php echo htmlspecialchars($row["people_nom"]); ?></a></td>
+      <td><a title="Cliquez pour modifier." href="PersonUpdate-single.php?id=<?php echo htmlspecialchars($row["people_id"]);?>"><i class="fas fa-pen"></i></a></td>
+      <td><a title="Cliquez pour supprimer." href="PersonDelete.php?id=<?php echo htmlspecialchars($row["people_id"]); ?>"><i class="fas fa-trash-alt"></i></a></td>
+    </tr>
   <?php endforeach; ?>
   </tbody>
 </table>
